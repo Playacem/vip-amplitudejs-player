@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VIP AmplitudeJS Player</title>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@3.0.2/dist/amplitude.min.js"></script>
-    
+    <script type="text/javascript" src="./script.js"></script>
 </head>
+
 <body>
     <header>
         <h1>VIP AmplitudeJS Player</h1>
     </header>
     <main>
-        <!-- Todo: Add player here-->
+        <!-- Todo: Add more player elements and make it more beautiful -->
+        <div id="time-container">
+            <span class="current-time">
+<span class="amplitude-current-minutes" amplitude-main-current-minutes="true"></span>:<span class="amplitude-current-seconds"
+                amplitude-main-current-seconds="true"></span>
+            </span>
+            <input type="range" class="amplitude-song-slider" amplitude-main-song-slider="true" />
+            <span class="duration">
+<span class="amplitude-duration-minutes" amplitude-main-duration-minutes="true"></span>:<span class="amplitude-duration-seconds"
+                amplitude-main-duration-seconds="true"></span>
+            </span>
+        </div><input type="range" class="amplitude-volume-slider" />
     </main>
     <footer>
         Original playlist by <a href="https://www.aersia.net">Cats777</a>
     </footer>
 </body>
+
 </html>
