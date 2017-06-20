@@ -1,20 +1,30 @@
 
-# Created by https://www.gitignore.io/api/macos,linux,windows
+# Created by https://www.gitignore.io/api/windows
 
-### Linux ###
-*~
+### Windows ###
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
 
-# temporary files which can be created if a process still has a handle open of a deleted file
-.fuse_hidden*
+# Folder config file
+Desktop.ini
 
-# KDE directory preferences
-.directory
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
 
-# Linux trash folder which might appear on any partition or disk
-.Trash-*
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
 
-# .nfs files are created when an open file is removed but is still being accessed
-.nfs*
+# Windows shortcuts
+*.lnk
+
+# End of https://www.gitignore.io/api/windows
+
+# Created by https://www.gitignore.io/api/macos
 
 ### macOS ###
 *.DS_Store
@@ -43,25 +53,23 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-### Windows ###
-# Windows thumbnail cache files
-Thumbs.db
-ehthumbs.db
-ehthumbs_vista.db
+# End of https://www.gitignore.io/api/macos
 
-# Folder config file
-Desktop.ini
+# Created by https://www.gitignore.io/api/linux
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+### Linux ###
+*~
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
 
-# Windows shortcuts
-*.lnk
+# KDE directory preferences
+.directory
 
-# End of https://www.gitignore.io/api/macos,linux,windows
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+# End of https://www.gitignore.io/api/linux
