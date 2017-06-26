@@ -2,36 +2,63 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>VIP AmplitudeJS Player</title>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@3.0.2/dist/amplitude.min.js"></script>
-    <script type="text/javascript" src="./script.js" async></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>VIP AmplitudeJS Player</title>
+	<!-- Styles -->
+	<link href="./main.css" rel="stylesheet">
+	<link href="./player.css" rel="stylesheet">
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@3.0.2/dist/amplitude.min.js"></script>
+	<script type="text/javascript" src="./script.js" async></script>
 </head>
 
 <body>
-    <header>
-        <h1>VIP AmplitudeJS Player</h1>
-    </header>
-    <main>
-        <!-- Todo: Add more player elements and make it more beautiful -->
-        <div id="time-container">
-            <span class="current-time">
+	<header>
+		<h1>VIP AmplitudeJS Player</h1>
+	</header>
+	<main id="amplitude-player">
+		<!-- Todo: Add more player elements and make it more beautiful -->
+		<div id="time-container">
+			<span class="current-time">
 <span class="amplitude-current-minutes" amplitude-main-current-minutes="true"></span>:<span class="amplitude-current-seconds"
-                amplitude-main-current-seconds="true"></span>
-            </span>
-            <input type="range" class="amplitude-song-slider" amplitude-main-song-slider="true" />
-            <span class="duration">
+			    amplitude-main-current-seconds="true"></span>
+			</span>
+			<input type="range" class="amplitude-song-slider" amplitude-main-song-slider="true" />
+			<span class="duration">
 <span class="amplitude-duration-minutes" amplitude-main-duration-minutes="true"></span>:<span class="amplitude-duration-seconds"
-                amplitude-main-duration-seconds="true"></span>
-            </span>
-        </div>
-        <input type="range" class="amplitude-volume-slider" />
-    </main>
-    <footer>
-        Original playlist by <a href="https://www.aersia.net">Cats777</a>
-    </footer>
+			    amplitude-main-duration-seconds="true"></span>
+			</span>
+		</div>
+
+		<div id="control-container">
+			<div id="repeat-container">
+				<div id="repeat" class="amplitude-repeat amplitude-repeat-off"></div>
+			</div>
+			<div id="central-control-container">
+				<div id="previous" class="amplitude-prev"></div>
+				<div amplitude-main-play-pause="true" id="play-pause" class="amplitude-play-pause amplitude-paused"></div>
+				<div id="next" class="amplitude-next"></div>
+			</div>
+			<div id="shuffle-container">
+				<div id="shuffle" class="amplitude-shuffle amplitude-shuffle-off"></div>
+			</div>
+		</div>
+
+		<input type="range" class="amplitude-volume-slider" />
+
+		<div id="meta-container">
+			<span amplitude-song-info="name" data-amplitude-main-song-info="true" class="song-name"></span>
+			<div class="song-artist-album">
+				<span amplitude-song-info="artist" data-amplitude-main-song-info="true"></span>
+				<span amplitude-song-info="album" data-amplitude-main-song-info="true"></span>
+			</div>
+		</div>
+	</main>
+	<footer>
+		Original playlist by <a href="https://www.aersia.net">Cats777</a>
+	</footer>
 </body>
 
 </html>
