@@ -71,12 +71,8 @@
 				let playlist = PLAYLISTS[key];
 				let localSongs = [];
 				let promise = parseXmlUrl(playlist.url).then(xmlDoc => {
-					try {
-						let trackElements = [].slice.call(xmlDoc.getElementsByTagName("track"), 0);
-						return Promise.resolve(trackElements);
-					} catch (error) {
-						return Promise.reject(error);
-					}
+					let trackElements = [].slice.call(xmlDoc.getElementsByTagName("track"), 0);
+					return trackElements;
 
 				}).then(elements => {
 					let track = elements.pop();
@@ -86,16 +82,16 @@
 						track = elements.pop();
 					}
 					console.log("Got " + localSongs.length + " songs from " + playlist.displayName);
-					return Promise.resolve(localSongs);
+					return localSongs;
 				}).catch(reason => {
 					console.log("Impossible to parse! ", reason);
-					return Promise.resolve([]);
+					return [];
 				});
 				promises.push(promise);
 			}
 		}
 		return Promise.all(promises)
-			.then(values => Promise.resolve(values.reduce((prev, curr) => prev.concat(curr), [])));
+			.then(values => values.reduce((prev, curr) => prev.concat(curr), []));
 	}
 
 	function getPlaylists(songs) {
@@ -126,7 +122,7 @@
 			"autoplay": true,
 			playlists
 		};
-		return Promise.resolve(config);
+		return config;
 	}).then(config => {
 		promiseDOMReady().then(() => Amplitude.init(config));
 	});
