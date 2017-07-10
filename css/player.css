@@ -21,7 +21,7 @@
 }
 
 #shuffle {
-	background: url("../open-iconic/svg/chat.svg");
+	background: url("../open-iconic/svg/random.svg");
 }
 
 #previous {
@@ -41,7 +41,7 @@
 }
 
 #repeat {
-	background: url("../open-iconic/svg/reload.svg");
+	background: url("../open-iconic/svg/loop.svg");
 }
 
 #previous, #play-pause.amplitude-playing, #play-pause.amplitude-paused, #next, #repeat, #shuffle {
