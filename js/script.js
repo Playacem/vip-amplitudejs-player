@@ -67,28 +67,28 @@
 	function getSongs() {
 		let promises = [];
 		for (let key in PLAYLISTS) {
-			if (PLAYLISTS.hasOwnProperty(key)) {
-				let playlist = PLAYLISTS[key];
-				let localSongs = [];
-				let promise = parseXmlUrl(playlist.url).then(xmlDoc => {
-					let trackElements = [].slice.call(xmlDoc.getElementsByTagName("track"), 0);
-					return trackElements;
-
-				}).then(elements => {
-					let track = elements.pop();
-					while (track) {
-						let nodes = [track.children[0], track.children[1], track.children[2]];
-						localSongs.push(createSong(nodes, playlist.displayName));
-						track = elements.pop();
-					}
-					console.log("Got " + localSongs.length + " songs from " + playlist.displayName);
-					return localSongs;
-				}).catch(reason => {
-					console.log("Impossible to parse! ", reason);
-					return [];
-				});
-				promises.push(promise);
+			if (!PLAYLISTS.hasOwnProperty(key)) {
+				continue;
 			}
+
+			let playlist = PLAYLISTS[key];
+			let localSongs = [];
+			let promise = parseXmlUrl(playlist.url).then(xmlDoc => {
+				return [].slice.call(xmlDoc.getElementsByTagName("track"), 0);
+			}).then(elements => {
+				let track = elements.pop();
+				while (track) {
+					let nodes = [track.children[0], track.children[1], track.children[2]];
+					localSongs.push(createSong(nodes, playlist.displayName));
+					track = elements.pop();
+				}
+				console.log("Got " + localSongs.length + " songs from " + playlist.displayName);
+				return localSongs;
+			}).catch(reason => {
+				console.log("Impossible to parse! ", reason);
+				return [];
+			});
+			promises.push(promise);
 		}
 		return Promise.all(promises)
 			.then(values => values.reduce((prev, curr) => prev.concat(curr), []));
