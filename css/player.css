@@ -20,8 +20,12 @@
 	text-overflow: ellipsis;
 }
 
-#shuffle {
+#shuffle.amplitude-shuffle-off {
 	background: url("../open-iconic/svg/random.svg");
+}
+
+#shuffle.amplitude-shuffle-on {
+	background: url("../svg/transfer_2r.svg");
 }
 
 #previous {
@@ -44,8 +48,8 @@
 	background: url("../open-iconic/svg/loop.svg");
 }
 
-#previous, #play-pause.amplitude-playing, #play-pause.amplitude-paused, #next, #repeat, #shuffle {
-	background-size: contain;
+#previous, #play-pause, #next, #repeat, #shuffle {
+	background-size: contain !important;
 	width: 64px;
 	height: 64px;
 }
