@@ -116,13 +116,12 @@
 	getSongs().then(songs => {
 		console.log("Got songs. Initializing Amplitude...");
 		let playlists = getPlaylists(songs);
-		const config = {
+		return {
 			"songs": songs,
 			"volume": 0.5,
 			"autoplay": true,
 			playlists
 		};
-		return config;
 	}).then(config => {
 		promiseDOMReady().then(() => Amplitude.init(config));
 	});
