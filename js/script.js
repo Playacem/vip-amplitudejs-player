@@ -119,7 +119,7 @@
 		return {
 			"songs": songs,
 			"volume": 0.5,
-			"autoplay": true,
+			"autoplay": false,
 			playlists
 		};
 	}).then(config => {

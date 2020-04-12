@@ -1,6 +1,6 @@
 # VIP-AmplitudeJS-Player
 
-This player uses AmplitudeJS to play the [Aersia.net](https://www.aersia.net) playlists.
+This player uses AmplitudeJS to play the [aersia.net](https://www.aersia.net) playlists.
 
 
 ## Credits
