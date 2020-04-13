@@ -1,5 +1,5 @@
 (function () {
-	const PLAYLISTS = {
+	const XML_PLAYLISTS = {
 		"vip": {
 			"url": "http://vip.aersia.net/roster.xml",
 			"displayName": "Vidya Interweb Playlist"
@@ -40,7 +40,7 @@
 			});
 	}
 
-	function createSong(nodes, displayName) {
+	function createSongFromXmlNodes(nodes, displayName) {
 		let artist = "";
 		let name = "";
 		let url = "";
@@ -64,14 +64,14 @@
 		};
 	}
 
-	function getSongs() {
+	function getSongsFromXml() {
 		let promises = [];
-		for (let key in PLAYLISTS) {
-			if (!PLAYLISTS.hasOwnProperty(key)) {
+		for (let key in XML_PLAYLISTS) {
+			if (!XML_PLAYLISTS.hasOwnProperty(key)) {
 				continue;
 			}
 
-			let playlist = PLAYLISTS[key];
+			let playlist = XML_PLAYLISTS[key];
 			let localSongs = [];
 			let promise = parseXmlUrl(playlist.url).then(xmlDoc => {
 				return [].slice.call(xmlDoc.getElementsByTagName("track"), 0);
@@ -79,7 +79,7 @@
 				let track = elements.pop();
 				while (track) {
 					let nodes = [track.children[0], track.children[1], track.children[2]];
-					localSongs.push(createSong(nodes, playlist.displayName));
+					localSongs.push(createSongFromXmlNodes(nodes, playlist.displayName));
 					track = elements.pop();
 				}
 				console.log("Got " + localSongs.length + " songs from " + playlist.displayName);
@@ -96,12 +96,11 @@
 
 	function getPlaylists(songs) {
 		return songs.reduce((prev, curr, currentIndex) => {
-			let jsonKey = curr.album.toLowerCase();
-			jsonKey = jsonKey.replace(/\s+/i, "_");
+			let jsonKey = curr.album.toLowerCase().replace(/\s+/i, "_");
 			if (!(jsonKey in prev)) {
-				prev[jsonKey] = [];
+				prev[jsonKey] = {songs: [], title: curr.album};
 			}
-			prev[jsonKey].push(currentIndex);
+			prev[jsonKey].songs.push(currentIndex);
 			return prev;
 		}, {});
 	}
@@ -113,13 +112,12 @@
 		});
 	}
 
-	getSongs().then(songs => {
+	getSongsFromXml().then(songs => {
 		console.log("Got songs. Initializing Amplitude...");
 		let playlists = getPlaylists(songs);
 		return {
 			"songs": songs,
 			"volume": 0.5,
-			"autoplay": false,
 			playlists
 		};
 	}).then(config => {
